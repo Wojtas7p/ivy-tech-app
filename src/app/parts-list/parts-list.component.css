@@ -1,0 +1,32 @@
+.button-El{
+   margin: .5rem auto;
+}
+
+
+.parts-container{
+    display: flex; 
+    flex-wrap: wrap;
+    gap: .5rem;
+   justify-content: center;
+}
+
+
+ .part-card {
+    width: 200px;
+    color:#0a000f;
+   } 
+
+  .part-card:hover{
+background-color: rgb(229, 229, 229);
+  }
+   
+   .part-title, .part-subtitle{
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+
+   }
+   
+   .part-subtitle{
+      font-size: 1.2rem;
+   }

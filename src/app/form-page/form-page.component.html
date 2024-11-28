@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm" class="form-contener">
+    <div>
+      <label for="partName">Part Name: </label>
+      <input type="text" id="partName" name="partName" [(ngModel)]="model.partName" required />
+    </div>
+  
+    <div>
+      <label for="quantity">Quantity: </label>
+      <input type="number" id="quantity" name="quantity" [(ngModel)]="model.quantity" required />
+    </div>
+    
+    <button type="submit" [disabled]="!form.valid" class="form-button">Add Part</button>
+  </form>
+  
+
+
+  <div class="form-parts">
+    <div class="form-parts-contener">
+    <mat-card class="part-card" *ngFor="let part of parts" [style.background-color]="part.color">
+      <mat-card-header>
+        <mat-card-title class="part-title">Part name: {{ part.partName }}</mat-card-title>
+        <mat-card-subtitle class="part-subtitle">Quantity: {{ part.quantity }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions class = "button-contener">
+        <button mat-raised-button (click)="removePart(part)" class = "button-El">Remove</button>
+        <button mat-raised-button (click)="changeColor(part)" class = "button-El">Change Color</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

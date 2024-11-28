@@ -1,0 +1,14 @@
+<div class="parts-container">
+  <mat-card class="part-card" *ngFor="let part of parts">
+    <mat-card-header>
+      <mat-card-title class="part-title">Part name: {{ part.partName }}</mat-card-title>
+      <mat-card-subtitle class="part-subtitle">Quantity: {{ part.quantity }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-raised-button (click)="onRemove(part)" class = "button-El">Remove</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+  
+  
