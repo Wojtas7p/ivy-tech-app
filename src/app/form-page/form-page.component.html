@@ -14,16 +14,16 @@
   
 
 
-  <div class="form-parts">
-    <div class="form-parts-contener">
-    <mat-card class="part-card" *ngFor="let part of parts" [style.background-color]="part.color">
-      <mat-card-header>
+<div class="form-parts">
+  <div class="form-parts-contener">
+    <mat-card class="part-card" *ngFor="let part of parts">
+      <mat-card-header class = "part-content-contener">
         <mat-card-title class="part-title">Part name: {{ part.partName }}</mat-card-title>
         <mat-card-subtitle class="part-subtitle">Quantity: {{ part.quantity }}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-actions class = "button-contener">
-        <button mat-raised-button (click)="removePart(part)" class = "button-El">Remove</button>
-        <button mat-raised-button (click)="changeColor(part)" class = "button-El">Change Color</button>
+      <mat-card-actions class="button-contener">
+        <button mat-raised-button (click)="removePart(part)" class="button-El">Remove</button>
+        <button mat-raised-button (click)="changeValue(part)" class="button-El">Change Value</button>
       </mat-card-actions>
     </mat-card>
   </div>

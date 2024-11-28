@@ -57,3 +57,13 @@ padding: .5rem;
 .part-subtitle{
    font-size: 1.2rem;
 }
+
+
+.part-card{
+   width: 200px;
+}
+
+.part-content-contener{
+   justify-content: center;
+
+}

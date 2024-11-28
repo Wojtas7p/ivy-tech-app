@@ -14,16 +14,14 @@ export class FormPageComponent {
 
   parts: any[] = [];
 
-
-  colors = ['rgb(223, 228, 232)', 'rgb(148, 148, 128)', 'rgb(161, 193, 195)'];
-  colorIndex = 0; 
+   possiblePartNames = ['XCM23', '2E3RF', 'GF562', 'ZAS45', 'LMK7J', 'LKOIA',
+    '0D9PL', 'LP908', 'SH789', '09JKO', '09OPL', 'AZ234'];
 
   onSubmit() {
     if (this.model.partName && this.model.quantity) {
       this.parts.push({
         partName: this.model.partName,
-        quantity: this.model.quantity,
-        color: 'rgb(223, 228, 232)'  
+        quantity: this.model.quantity
       });
       this.model.partName = '';
       this.model.quantity = null;
@@ -31,17 +29,18 @@ export class FormPageComponent {
   }
 
   removePart(part: any) {
-    
     this.parts = this.parts.filter(p => p !== part);
-
-   
-    this.colorIndex = 0;  
   }
 
-  changeColor(part: any) {
-    
-    const currentColorIndex = this.colors.indexOf(part.color);
-    const nextColorIndex = (currentColorIndex + 1) % this.colors.length;
-    part.color = this.colors[nextColorIndex];
+  changeValue(part: any) {
+
+    const randomPartName = this.possiblePartNames[
+      Math.floor(Math.random() * this.possiblePartNames.length)
+    ];
+
+       const randomQuantity = Math.floor(Math.random() * 100) + 1;
+
+    part.partName = randomPartName;
+    part.quantity = randomQuantity;
   }
 }
