@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr/node';
+import { CommonEngine, isMainModule } from '@angular/ssr/node';
 import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -31,7 +31,7 @@ app.get(
   '**',
   express.static(browserDistFolder, {
     maxAge: '1y',
-    index: 'index.html',
+    index: 'index.html'
   }),
 );
 
@@ -45,7 +45,7 @@ app.get('**', (req, res, next) => {
     .render({
       bootstrap: AppServerModule,
       documentFilePath: indexHtml,
-      url: `${protocol || 'http'}://${headers.host}${originalUrl}`,
+      url: `${protocol}://${headers.host}${originalUrl}`,
       publicPath: browserDistFolder,
       providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
     })
@@ -54,7 +54,12 @@ app.get('**', (req, res, next) => {
 });
 
 /**
- * Export the server as a Netlify handler.
+ * Start the server if this module is the main entry point.
+ * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
-export const handler = app;
-
+if (isMainModule(import.meta.url)) {
+  const port = process.env['PORT'] || 4000;
+  app.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
+  });
+}
